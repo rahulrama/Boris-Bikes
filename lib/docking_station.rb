@@ -11,8 +11,8 @@ attr_accessor :capacity
   end
 
   def release_bike
-    raise 'No bikes available' if empty?
-    bikes.pop
+    raise 'No bikes available' if working_bikes.empty?
+    bikes.delete working_bikes.pop
   end
 
   def dock(bike)
@@ -23,6 +23,10 @@ attr_accessor :capacity
   private
 
   attr_reader :bikes
+
+  def working_bikes
+    bikes.reject { |bike| bike.broken? }
+  end
 
   def full?
     bikes.count >= capacity
