@@ -3,7 +3,7 @@ class Bike
 attr_accessor :broken
 
     def working?
-      !@broken
+      !broken
     end
 
     def report_broken
@@ -11,7 +11,11 @@ attr_accessor :broken
     end
 
     def broken?
-      @broken
+      broken
+    end
+
+    def fix
+      !broken
     end
 
 end
